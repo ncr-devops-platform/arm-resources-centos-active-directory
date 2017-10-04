@@ -21,7 +21,7 @@ systemctl restart sssd
 export OLDIFS= $IFS
 export IFS=";"
 for group in $SUDO_GROUPS; do
-  echo "%$group ALL=(ALL)  ALL" 
+  echo "%$group ALL=(ALL)  ALL" >> /etc/sudoers
 done
 export IFS="$OLDIFS"
 
