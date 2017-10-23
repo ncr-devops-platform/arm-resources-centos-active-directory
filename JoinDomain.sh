@@ -12,7 +12,7 @@ SUDO_GROUPS=$4
 yum install sssd realmd oddjob oddjob-mkhomedir adcli samba-common samba-common-tools krb5-workstation openldap-clients policycoreutils-python -y
 
 # Join the domain
-echo $DOMAIN_USER_PASS | realm join $DOMAIN -U $DOMAIN_USER
+(realm list | grep $DOMAIN) || echo $DOMAIN_USER_PASS | realm join $DOMAIN -U $DOMAIN_USER
 
 # Allow interaction with AD objects without the domain suffixes
 sed -i '/use_fully_qualified_names = True/c\use_fully_qualified_names = False' /etc/sssd/sssd.conf 
